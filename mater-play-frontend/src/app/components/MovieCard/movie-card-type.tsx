@@ -1,3 +1,3 @@
-export type MovieCardProps = {
+export type TMovieCardProps = {
   capa: string;
 };
