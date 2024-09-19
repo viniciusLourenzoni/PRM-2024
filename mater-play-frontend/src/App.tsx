@@ -3,6 +3,7 @@ import Footer from "./app/components/Footer";
 import MovieCard from "./app/components/MovieCard";
 import Section from "./app/components/Section";
 import HighlightSection from "./app/components/HighlightSection";
+import { Container } from "@mui/material";
 
 export const movies = [
   {
@@ -44,13 +45,12 @@ function App() {
       <main style={{ marginTop: "4rem" }}>
         <HighlightSection></HighlightSection>
         <Section title="Recomendados para Você"></Section>
-        {/* <Section title="Para toda Família"></Section>
-        <Section title="Filmes de Comédia"></Section>
-        <Section title="Filmes de Suspense"></Section> */}
       </main>
-      {movies.map((movie, index) => (
-        <MovieCard key={index} capa={movie.poster} />
-      ))}
+      <Container>
+        {movies.map((movie, index) => (
+          <MovieCard key={index} capa={movie.poster} />
+        ))}
+      </Container>
       <Footer />
     </div>
   );
