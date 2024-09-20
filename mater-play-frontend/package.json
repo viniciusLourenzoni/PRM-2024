@@ -1,5 +1,6 @@
 {
   "name": "mater-play-frontend",
+  "author": {"name": "Vinicius Lourenzoni", "url": "https://github.com/viniciusLourenzoni"},
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -17,7 +18,8 @@
     "@mui/material": "^6.0.1",
     "add": "^2.0.6",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.0",
