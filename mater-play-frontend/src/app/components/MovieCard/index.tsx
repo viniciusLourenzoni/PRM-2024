@@ -1,25 +1,22 @@
 import Paper from "@mui/material/Paper";
-import type { TMovie } from "../../consts/const";
 
-interface MovieCardProps {
-  movie: TMovie;
-  onSelect: (movie: TMovie) => void;
-}
+type TMovieCardProps = {
+  poster: string;
+};
 
-function MovieCard({ movie, onSelect }: MovieCardProps) {
+function MovieCard({ poster }: TMovieCardProps) {
   return (
     <Paper
       elevation={0}
       component="a"
-      onClick={() => onSelect(movie)}
+      href="/1"
       sx={{
         minWidth: "10rem",
         margin: "0.5rem",
-        cursor: "pointer",
       }}
     >
       <img
-        src={movie.poster}
+        src={poster}
         alt="Movie capa"
         style={{
           width: "200px",
