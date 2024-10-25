@@ -17,10 +17,8 @@ function MovieCard({ poster }: TMovieCardProps) {
     >
       <img
         src={poster}
-        alt="Movie capa"
         style={{
-          width: "200px",
-          paddingTop: "1rem",
+          width: "100%",
         }}
       />
     </Paper>

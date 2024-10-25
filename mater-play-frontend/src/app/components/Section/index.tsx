@@ -1,16 +1,19 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
-import { TSectionProps } from "./section-props-type";
 import { useEffect, useState } from "react";
 import { IMovie } from "../../@libs/types";
-import { MoviesService } from "../../services/movie-service";
+import { MoviesService } from "../../services/movie.service";
 import MovieCard from "../MovieCard";
 
-function Section({ title }: TSectionProps) {
+type SectionProps = {
+  title: string;
+};
+function Section({ title }: SectionProps) {
   const [movies, setMovies] = useState<IMovie[]>([]);
 
   useEffect(() => {
     MoviesService.getMovies().then((result) => {
       setMovies(result);
+      console.log(result);
     });
   }, []);
 
@@ -36,7 +39,7 @@ function Section({ title }: TSectionProps) {
           }}
         >
           {movies.map((item) => (
-            <MovieCard poster={"assets/" + item.poster} />
+            <MovieCard key={item.id} poster={"assets/" + item.poster} />
           ))}
         </Stack>
       </Container>
