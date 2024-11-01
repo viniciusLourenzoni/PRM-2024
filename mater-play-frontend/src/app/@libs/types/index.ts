@@ -8,6 +8,6 @@ export interface IMovie {
 
 export interface ICategory {
   id?: number;
-  title: string;
+  name: string;
   active: boolean;
 }

@@ -9,5 +9,5 @@ export class Category {
   name: string;
 
   @Column({ nullable: false, default: true })
-  active: string;
+  active: boolean;
 }

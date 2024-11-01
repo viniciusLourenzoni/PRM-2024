@@ -10,7 +10,7 @@ const update = (id: number, category: ICategory) =>
   api.put(`${_endpoint}/${id}`, category);
 const remove = (id: number) => api.delete(`${_endpoint}/${id}`);
 
-export const MoviesService = {
+export const CategoryService = {
   create,
   getAll,
   getById,
