@@ -10,7 +10,9 @@ export class CategoryService {
   ) {}
 
   findAll(): Promise<Category[]> {
-    return this.repository.find();
+    return this.repository.find({
+      where: { active: true },
+    });
   }
 
   findById(id: number): Promise<Category> {
