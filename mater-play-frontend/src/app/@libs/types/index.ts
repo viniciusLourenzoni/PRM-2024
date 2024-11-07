@@ -7,7 +7,7 @@ export interface IMovie {
 }
 
 export interface ICategory {
-  id?: number;
+  id?: string;
   name: string;
   active: boolean;
 }

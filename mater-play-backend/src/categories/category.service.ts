@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Category } from 'src/entities/category.entity';
+import { Category } from 'src/categories/category.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class CategoryService {
     });
   }
 
-  findById(id: number): Promise<Category> {
+  findById(id: string): Promise<Category> {
     return this.repository.findOneBy({ id: id });
   }
 
@@ -23,7 +23,7 @@ export class CategoryService {
     return this.repository.save(category);
   }
 
-  async remove(id: number): Promise<void>{
+  async remove(id: string): Promise<void>{
     await this.repository.delete(id);
   }
 }

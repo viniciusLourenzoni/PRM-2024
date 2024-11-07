@@ -12,8 +12,8 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { Category } from 'src/entities/category.entity';
-import { CategoryService } from 'src/services/category.service';
+import { Category } from 'src/categories/category.entity';
+import { CategoryService } from 'src/categories/category.service';
 
 @Controller('categories')
 export class CategoryController {
@@ -25,7 +25,7 @@ export class CategoryController {
   }
 
   @Get(':id')
-  async findById(@Param('id', ParseIntPipe) id: number): Promise<Category> {
+  async findById(@Param('id', ParseIntPipe) id: string): Promise<Category> {
     const found = await this.service.findById(id);
 
     if (!found) {
@@ -41,7 +41,7 @@ export class CategoryController {
   }
 
   @Put(':id')
-  async update(@Param('id', ParseIntPipe) id: number, @Body() category: Category): Promise<Category>{
+  async update(@Param('id', ParseIntPipe) id: string, @Body() category: Category): Promise<Category>{
     const found = await this.service.findById(id);
 
     if (!found) {
@@ -55,7 +55,7 @@ export class CategoryController {
 
   @Delete(':id')
   @HttpCode(204)
-  async remove(@Param('id', ParseIntPipe) id: number): Promise<void>{
+  async remove(@Param('id', ParseIntPipe) id: string): Promise<void>{
     const found = await this.service.findById(id);
 
     if (!found) {

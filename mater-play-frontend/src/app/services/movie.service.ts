@@ -15,7 +15,7 @@ const getMoviesById = async (id: string): Promise<IMovie> => {
   return data;
 };
 
-const getByCategoryId = async (id: number): Promise<IMovie[]> => {
+const getByCategoryId = async (id: string): Promise<IMovie[]> => {
   const { data } = await api.get(`${_endpoint}?categoryId=${id}`);
 
   return data;
