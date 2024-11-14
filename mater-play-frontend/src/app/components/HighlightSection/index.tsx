@@ -1,41 +1,70 @@
 import { Box, Button, Container, Stack, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { IMovie } from "../../@libs/types";
+import { MoviesService } from "../../services/movie.service";
 
-function HighlightSection() {
+function HighLightSection() {
+  const params = useParams();
+
+  const [movie, setMovie] = useState<IMovie>({} as IMovie);
+
+  useEffect(() => {
+    const movieId = params.id
+      ? params.id
+      : "5a420a78-8b19-42e5-9dee-1f257ebb5401";
+
+    MoviesService.getMoviesById(movieId)
+      .then((result) => {
+        if (result) setMovie(result);
+      })
+      .catch((error) => {
+        console.log("PAU: ", error);
+      });
+  }, [params]);
+
   return (
     <Box>
       <Container>
         <Stack direction="row">
-          <img src="/assets/poster4.jpg" alt="Poster 1" />
-          <Stack justifyContent="center" paddingLeft="3rem">
-            <Typography variant="h4">A Casa do Dragão</Typography>
-            <Typography variant="subtitle2" marginBottom="2rem">
+          <img src={`assets/${movie.poster}`} />
+          <Stack
+            sx={{
+              justifyContent: "center",
+              paddingLeft: "3rem",
+            }}
+          >
+            <Typography variant="h4">{movie.title}</Typography>
+            <Typography variant="subtitle2">
               <span
                 style={{
-                  borderStyle: "solid",
                   borderWidth: "1px",
-                  padding: "0.25rem",
-                  marginRight: "0.5rem",
-                  fontSize: "1rem",
+                  borderStyle: "solid",
+                  padding: "0.2rem",
+                  marginRight: "0.3rem",
                 }}
               >
-                16
+                {movie.ageRating}
               </span>
-              Sci & Fantasy, Drama, Action & Adventure
+              Aventura, Fantasia, Ação
             </Typography>
-            <Typography variant="subtitle1" marginBottom="0.5rem">
+            <Typography
+              variant="subtitle1"
+              sx={{
+                paddingTop: "2rem",
+                marginBottom: "0.5rem",
+              }}
+            >
               Sinopse
             </Typography>
-            <Typography variant="body2" marginBottom="0.75rem">
-              Cerca de 200 anos antes dos acontecimentos de "Game of Thrones", a
-              Casa Targaryen enfrentou seu primeiro grande inimigo: um poderoso
-              dragão. Esse lendário confronto marcou o início de uma era
-              turbulenta para a dinastia, e envolveu também o rei de Gondor, um
-              soberano distante e envolto em mistérios. O rei era o único
-              sobrevivente de sua linhagem, devastada por tragédias e batalhas
-              épicas, e sua conexão com os Targaryens estabeleceu uma aliança
-              inesperada que mudaria o curso da história dos Sete Reinos.
-            </Typography>
-            <Stack direction={"row"} gap={1}>
+            <Typography variant="body2">{movie.description}</Typography>
+            <Stack
+              gap={1}
+              direction="row"
+              sx={{
+                paddingY: "1rem",
+              }}
+            >
               <Button variant="outlined">Assistir</Button>
               <Button variant="outlined">Detalhes</Button>
             </Stack>
@@ -46,4 +75,4 @@ function HighlightSection() {
   );
 }
 
-export default HighlightSection;
+export default HighLightSection;

@@ -1,23 +1,21 @@
-import Paper from "@mui/material/Paper";
+import { Paper } from "@mui/material";
 import { IMovie } from "../../@libs/types";
 
-type TMovieCardProps = {
+type MovieCardProps = {
   movie: IMovie;
 };
-
-function MovieCard({ movie }: TMovieCardProps) {
+function MovieCard({ movie }: MovieCardProps) {
   return (
     <Paper
-      elevation={0}
       component="a"
-      href={{ movie.id}}
+      elevation={0}
+      href={movie.id}
       sx={{
         minWidth: "10rem",
-        margin: "0.5rem",
       }}
     >
       <img
-        src={"/assets/" + movie.poster} 
+        src={`assets/${movie.poster}`}
         style={{
           width: "100%",
         }}
