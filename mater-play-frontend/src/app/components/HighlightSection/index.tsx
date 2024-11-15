@@ -7,12 +7,19 @@ import { MoviesService } from "../../services/movie.service";
 function HighLightSection() {
   const params = useParams();
 
-  const [movie, setMovie] = useState<IMovie>({} as IMovie);
+  const [movie, setMovie] = useState<IMovie>({
+    id: "",
+    title: "",
+    description: "",
+    ageRating: "",
+    poster: "",
+    genre: [],
+  });
 
   useEffect(() => {
     const movieId = params.id
       ? params.id
-      : "5a420a78-8b19-42e5-9dee-1f257ebb5401";
+      : "b46617a2-7fe6-46b9-b761-4d6b05160f63";
 
     MoviesService.getMoviesById(movieId)
       .then((result) => {
@@ -46,7 +53,7 @@ function HighLightSection() {
               >
                 {movie.ageRating}
               </span>
-              Aventura, Fantasia, Ação
+              {movie.genre.map((g) => g.name).join(", ")}
             </Typography>
             <Typography
               variant="subtitle1"

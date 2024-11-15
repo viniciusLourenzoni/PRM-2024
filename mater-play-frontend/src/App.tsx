@@ -8,6 +8,7 @@ function App() {
     <div className="wrapper">
       <Header />
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/:id" element={<HomePage />} />
       </Routes>
       <Footer />
